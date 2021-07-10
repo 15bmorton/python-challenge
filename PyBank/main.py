@@ -8,7 +8,7 @@ total_m = []
 total_pl = []
 mpl_change = []
 
-with open(budget_csv) as budgetfile:
+with open(budget_csv, newline= '\n') as budgetfile:
     budget_reader = csv.reader(budgetfile, delimiter=",")
 
     budget_header = next(budget_reader)
@@ -42,7 +42,21 @@ print(f"Average Change: {round(sum(mpl_change)/len(mpl_change),2)}")
 print(f"Greatest Increase in Profits: {total_m[gi_month]} ${(str(greatest_increase_value))}")
 print(f"Greatest Decrease in Profits: {total_m[gd_month]} ${(str(greatest_decrease_value))}")
 
+output_file = '/Users/bethanymorton/Desktop/python-challenge/PyBank/analysis/Final_Output'
 
+with open(output_file,"w") as file:
+    
+    file.write("Financial Analysis")
+    file.write("\n")
+    file.write(f"Total Months: {len(total_m)}")
+    file.write("\n")
+    file.write(f"Total: ${sum(total_pl)}")
+    file.write("\n")
+    file.write(f"Average Change: {round(sum(mpl_change)/len(mpl_change),2)}")
+    file.write("\n")
+    file.write(f"Greatest Increase in Profits: {total_m[gi_month]} ${(str(greatest_increase_value))}")
+    file.write("\n")
+    file.write(f"Greatest Decrease in Profits: {total_m[gd_month]} ${(str(greatest_decrease_value))}")
 
 
     
